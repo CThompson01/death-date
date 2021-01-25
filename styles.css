@@ -1,3 +1,23 @@
+input {
+	margin-right: 5;
+	color: rgb(66, 66, 66);
+	border-radius: 5px;
+	border-width: 2px;
+}
+
+button {
+	margin-left: 10;
+	background-color: rgb(66, 66, 66);
+	border-color: rgb(66, 66, 66);
+	border-width: 1px;
+	border-radius: 7px;
+	color: white;
+	padding: 3px 7px;
+	text-align: center;
+	display: inline-block;
+	font-size: 15px;
+}
+
 .unbolded {
 	font-weight: normal;
 }
@@ -6,10 +26,15 @@
 	font-size: 16;
 }
 
+#death-window-container {
+  height: 100%;
+  margin: auto;
+  display: table;
+}
+
 #death-window {
-	position: absolute;
-	margin-top: 17%;
-	margin-left: 43%;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 #banner {
