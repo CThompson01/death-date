@@ -20,7 +20,7 @@ var currentDate = new Date();
  * The birth date of the person
  * @type {Date}
  */
-var birthDate = new Date('02/16/2001');
+var birthDate = new Date();
 
 // Check if a custom name has been given and update screen if one has
 if (getURLParam('name') != undefined)
@@ -28,18 +28,22 @@ if (getURLParam('name') != undefined)
 
 // Check if a custom date has been given and update the screen if one has
 if (getURLParam('date') != undefined) {
+	// Get the birth date from the url and format it
 	var date = getURLParam('date').split('%');
 	birthDate = new Date(date[0] + '/' + date[1] + '/' + date[2]);
+
+	// Calculate the difference in time between the birth date and the current date 
+	var dateDifference = Math.abs(currentDate.getTime() - birthDate.getTime()); 
+
+	// Convert the difference in time to difference in days
+	var dateDifferenceDays = dateDifference / (1000 * 3600 * 24);
+
+	// Update the page to show the amount of days left
+	document.getElementById('time-left-label').innerHTML = Math.floor(avgLifeSpan - dateDifferenceDays).toLocaleString('en');
+
+	// Update the page to not capitalize the 'days until they die.' phrase
+	document.getElementById('days-until').innerHTML = 'days left until death!';
 }
-
-// Calculate the difference in time between the birth date and the current date 
-var dateDifference = Math.abs(currentDate.getTime() - birthDate.getTime()); 
-
-// Convert the difference in time to difference in days
-var dateDifferenceDays = dateDifference / (1000 * 3600 * 24);
-
-// Update the page to show the amount of days left
-document.getElementById('time-left-label').innerHTML = Math.floor(avgLifeSpan - dateDifferenceDays);
 
 /**
  * Redirects the user to their custom link using the entered date of birth and name
