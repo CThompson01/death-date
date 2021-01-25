@@ -1,0 +1,25 @@
+.unbolded {
+	font-weight: normal;
+}
+
+#disclaimer-text {
+	font-size: 16;
+}
+
+#death-window {
+	position: absolute;
+	margin-top: 17%;
+	margin-left: 43%;
+}
+
+#banner {
+	position: absolute;
+	padding-left: 20;
+	padding-right: 20;
+	padding-bottom: 15;
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: rgb(242, 244, 248);
+	color: rgb(66, 66, 66);
+}

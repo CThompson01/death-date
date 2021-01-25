@@ -1,79 +1,23 @@
 <html>
-<body>
-	<div>
-		<center>
-			<h2 id='name'>Chase has</h2>
-			<b><h1 id="time-left-label"></h1></b>
-			<h2>days left until death</h2>
-		</center>
-	</div>
-</body>
-<script type="text/javascript">
-	/**
-	 * The average life span of a human in days
-	 * @type {Number}
-	 */
-	const avgLifeSpan = 27375;
-
-	/**
-	 * The variables passed to the webpage through urls
-	 * @type {[type]}
-	 */
-	const urlVariables = window.location.search.substring(1).split('&');
-
-	/**
-	 * The current date of when the page is being accessed
-	 * @type {Date}
-	 */
-	var currentDate = new Date();
-
-	/**
-	 * The birth date of the person
-	 * @type {Date}
-	 */
-	var birthDate = new Date("02/16/2001");
-
-	// Check if a custom name has been given and update screen if one has
-	if (getURLParam('name') != undefined)
-		document.getElementById('name').innerHTML = getURLParam('name') + " has";
-
-	// Check if a custom date has been given and update the screen if one has
-	if (getURLParam('date') != undefined) {
-		var date = getURLParam('date').split('%');
-		birthDate = new Date(date[0] + '/' + date[1] + '/' + date[2]);
-	}
-	
-	// Calculate the difference in time between the birth date and the current date 
-	var dateDifference = Math.abs(currentDate.getTime() - birthDate.getTime()); 
-  
-	// Convert the difference in time to difference in days
-	var dateDifferenceDays = dateDifference / (1000 * 3600 * 24);
-
-	// Update the page to show the amount of days left
-	document.getElementById("time-left-label").innerHTML = Math.floor(avgLifeSpan - dateDifferenceDays);
-
-	/**
-	 * Sorts through the URL Params and grabs the one specified
-	 * @param  {[type]} param The param being searched for
-	 * @return {[type]}       The value of the param that was searched for
-	 */
-	function getURLParam(param) {
-		for (var i = 0; i < urlVariables.length; i++) {
-			var paramName = urlVariables[i].split('=');
-			if (paramName[0] == param)
-				return paramName[1];
-		}
-	}
-</script>
-<style>
-	h2 {
-		font-weight: normal;
-	}
-
-	div {
-		position: absolute;
-		margin-top: 17%;
-		margin-left: 43%;
-	}
-</style>
+	<head>
+		<link rel='stylesheet' href='styles.css'>
+	</head>
+	<body>
+		<div id='banner'>
+			<p id='disclaimer-text'>The human lifespan is roughly 27,375 days long. This website takes a date of birth provided within the url and calculates how long someone would have left should they live exactly 27,375 days. This website was created to better illustrate how our time here is limited and how we should cherish everyday. Use the inputs below to enter in your own birthdate and name, and press go to go to your custom page. No data is saved, the data is used only to create the url that generates your page.</p>
+			<label for='enter-name'>Enter your name:</label>
+			<input type='text' id='enter-name' name='enter-name'>
+			<label for='birth-date'>Enter a date of birth:</label>
+			<input type='date' id='dob' name='dob'>
+			<button onclick="generateWebpage()">Generate Webpage</button>
+		</div>
+		<div id='death-window'>
+			<center>
+				<h2 id='name' class='unbolded'>Chase has</h2>
+				<b><h1 id='time-left-label'></h1></b>
+				<h2 class='unbolded'>days left until death</h2>
+			</center>
+		</div>
+	</body>
+	<script src='deathCalculations.js'></script>
 </html>
