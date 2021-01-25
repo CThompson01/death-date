@@ -6,7 +6,6 @@ input {
 }
 
 button {
-	margin-left: 10;
 	background-color: rgb(66, 66, 66);
 	border-color: rgb(66, 66, 66);
 	border-width: 1px;
@@ -24,6 +23,14 @@ button {
 
 #disclaimer-text {
 	font-size: 16;
+}
+
+#input-container {
+	flex-flow: row wrap;
+}
+
+#input-row {
+	margin-bottom: 10;
 }
 
 #death-window-container {
@@ -47,4 +54,43 @@ button {
 	top: 0;
 	background-color: rgb(242, 244, 248);
 	color: rgb(66, 66, 66);
+}
+
+@media only screen and (max-width: 812px) {
+	#input-container {
+		flex-flow: column wrap;
+	}
+
+	#input-row {
+		flex-direction: row;
+		margin-bottom: 20;
+		width: 100%;
+	}
+
+	label {
+		margin-right: 20;
+		width: 20%;
+		font-size: 3vw;
+	}
+
+	input {
+		width: 65%;
+		height: 6vw;
+		font-size: 3vw;
+	}
+
+	button {
+		font-size: 3vw;
+		padding: 9px 21px;
+	}
+
+	#disclaimer-text {
+		font-size: 3vw;
+	}
+
+	#death-window {
+		font-size: 3vw;
+		border-color: red;
+		border-width: 100px;
+	}
 }

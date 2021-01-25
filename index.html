@@ -1,15 +1,22 @@
 <html>
 	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		<link rel='stylesheet' href='styles.css'>
 	</head>
 	<body>
 		<div id='banner'>
 			<p id='disclaimer-text'>The human lifespan is roughly 27,375 days long. This website takes a date of birth provided within the url and calculates how long someone would have left should they live exactly 27,375 days. This website was created to better illustrate how our time here is limited and how we should cherish everyday. Use the inputs below to enter in your own birthdate and name, and press go to go to your custom page. No data is saved, the data is used only to create the url that generates your page.</p>
-			<label for='enter-name'>Enter your name:</label>
-			<input type='text' id='enter-name' name='enter-name'>
-			<label for='birth-date'>Enter a date of birth:</label>
-			<input type='date' id='dob' name='dob'>
-			<button onclick="generateWebpage()">Generate Webpage</button>
+			<div id='input-container'>
+				<div id='input-row'>
+					<label for='enter-name'>Enter your name:</label>
+					<input type='text' id='enter-name' name='enter-name'>
+				</div>
+				<div id='input-row'>
+					<label for='birth-date'>Enter a date of birth:</label>
+					<input type='date' id='dob' name='dob'>
+				</div>
+				<button onclick="generateWebpage()">Generate Webpage</button>
+			</div>
 		</div>
 		<div id='death-window-container'>
 			<center id='death-window'>
