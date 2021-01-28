@@ -49,8 +49,53 @@ if (getURLParam('date') != undefined) {
  * Redirects the user to their custom link using the entered date of birth and name
  */
 function generateWebpage() {
-	var dob = document.getElementById('dob').value.split('-');
-	window.location.href = `?name=${document.getElementById('enter-name').value}&date=${dob[1]}%${dob[2]}%${dob[0]}`;
+	// Check if the inputs are even showing, if not display them
+	if (document.getElementById('input-hider').style.display == '' || document.getElementById('input-hider').style.display == 'none') {
+		document.getElementById('input-hider').style.display = 'block';
+		document.getElementById('input-hider-button').style.display = 'inline-flex';
+	} else {
+		// Grab the entered info
+		var name = document.getElementById('enter-name').value
+		var dob = document.getElementById('dob').value.split('-');
+
+		// Validate that all information is added
+		// If any information is missing, change that input slot to red and exit the function
+		if (!validateInfo([name, ...dob])) {
+			Array.from(document.getElementsByTagName('input')).forEach(element => {
+				if (element.value == '')
+					element.style.borderColor = 'red';
+				else
+					element.style.borderColor = 'rgb(66,66,66)';
+			});
+			return;
+		} 
+
+		// Redirect to the custom page
+		window.location.href = `?name=${name}&date=${dob[1]}%${dob[2]}%${dob[0]}`;
+	}
+}
+
+/**
+ * Hides the input window
+ */
+function closeGenerateWindow() {
+	document.getElementById('input-hider').style.display = 'none';
+	document.getElementById('input-hider-button').style.display = 'none';
+}
+
+/**
+ * Checks that all info provided has an appropriate value
+ * @param  {String[]} info The information being validated
+ * @return {Boolean}       Whether the information is valid or not
+ */
+function validateInfo(info) {
+	var isValid = true;
+	info.forEach(item => {
+		if (item == null || item == undefined || item == '')
+			isValid = false;
+	});
+
+	return isValid;
 }
 
 /**

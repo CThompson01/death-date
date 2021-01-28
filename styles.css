@@ -1,6 +1,8 @@
 input {
 	margin-right: 5;
 	color: rgb(66, 66, 66);
+	border-style: solid;
+	border-color: rgb(66, 66, 66);
 	border-radius: 5px;
 	border-width: 2px;
 }
@@ -21,12 +23,21 @@ button {
 	font-weight: normal;
 }
 
+
 #disclaimer-text {
 	font-size: 16;
 }
 
 #input-container {
 	flex-flow: row wrap;
+}
+
+#input-hider {
+	display: none;
+}
+
+#input-hider-button {
+	display: none;
 }
 
 #input-row {
